@@ -4,10 +4,16 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/uyat');
+const cors = require('cors');
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,3 +45,13 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+var userSchema = new mongoose.Schema({
+  email: String,
+  username: String,
+  Password: String
+});
+
+app.listen(3000, function() {
+  console.log('listening on 3000')
+})
