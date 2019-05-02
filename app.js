@@ -11,6 +11,7 @@ const cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var router = express.Router();
 
 var app = express();
 app.use(cors());
@@ -46,12 +47,22 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-var userSchema = new mongoose.Schema({
-  email: String,
-  username: String,
-  Password: String
-});
+// var UserSchema = new Schema({
+//   username: {
+//     type: String,
+//     required: 'Kindly enter your username'
+//   },
+//   Created_date: {
+//     type: Date,
+//     default: Date.now
+//   },
+//   password:{}
+// });
+// var User = mongoose.model('User', userSchema );
 
-app.listen(3000, function() {
-  console.log('listening on 3000')
-})
+//
+// app.use('/api', router);
+//
+// app.listen(3000, function() {
+//   console.log('listening on 3000')
+// })
